@@ -7,7 +7,6 @@ parameters:
   draw_func:
     module: samples.keypoint_detection.overlay
     class_name: Overlay
-  batch_size: 1
 
 pipeline:
   elements:
