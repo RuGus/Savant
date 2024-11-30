@@ -136,7 +136,7 @@ class ModuleMetricsCollector(BaseMetricsCollector):
         self._pipeline = pipeline
         label_names = ('record_type',)
         stage_performance_label_names = ('record_type', 'stage_name')
-        stage_latency_label_names = ('record_type', 'stage_name', 'previous_stage_name')
+        stage_latency_label_names = ('record_type', 'destination_stage_name', 'source_module_stage')
         self.register_metric(
             Counter(
                 'frame_counter',
