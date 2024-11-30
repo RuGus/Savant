@@ -7,42 +7,6 @@ parameters:
   draw_func:
     module: samples.keypoint_detection.overlay
     class_name: Overlay
+  batch_size: 1
 
 pipeline:
-  elements:
-    - element: nvinfer@complex_model
-      name: ${parameters.detector}
-      model:
-        remote:
-          url: s3://savant-data/models/yolov8-pose/${parameters.detector}.zip
-          checksum_url: s3://savant-data/models/yolov8-pose/${parameters.detector}.md5
-          parameters:
-            endpoint: https://eu-central-1.linodeobjects.com
-        format: onnx
-        model_file: ${parameters.detector}-simplify-dynamic.onnx
-        batch_size: 1
-        input:
-          shape: [3, 384, 640]
-          maintain_aspect_ratio: true
-          scale_factor: 0.0039215697906911373
-        output:
-          layer_names: ['output0']
-          converter:
-            module: samples.keypoint_detection.converter
-            class_name: YoloV8PoseConverter
-            kwargs:
-              confidence_threshold: 0.6
-              nms_iou_threshold: 0.45
-              top_k: 10
-          objects:
-            - class_id: 0
-              label: person
-              selector:
-                module: savant.selector.detector
-                class_name: MinMaxSizeBBoxSelector
-                kwargs:
-                  min_width: 40
-                  min_height: 40
-          attributes:
-            - name: keypoints
-              internal: true
