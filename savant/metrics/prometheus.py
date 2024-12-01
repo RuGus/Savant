@@ -267,8 +267,6 @@ class ModuleMetricsCollector(BaseMetricsCollector):
                     measurements.count, stage_latency_labels, ts
                 )
 
-            # TODO: handle SLS
-
     def get_last_records(self) -> List[FrameProcessingStatRecord]:
         """Get last metrics records from the pipeline.
 
