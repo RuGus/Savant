@@ -48,7 +48,7 @@ build-adapters-py:
 	docker buildx build \
 		--platform $(PLATFORM) \
 		-f docker/Dockerfile.adapters-py \
-		-t savant-adapters-py$(PLATFORM_SUFFIX) .
+		-t savant-adapters-py$(PLATFORM_SUFFIX):$(SAVANT_VERSION) .
 
 build-adapters-all: build-adapters-py build-adapters-gstreamer build-adapters-deepstream
 
