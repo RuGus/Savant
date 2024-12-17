@@ -1,4 +1,4 @@
-FROM python:3.9.13-slim
+FROM python:3.10.13-slim-bullseye
 
 ARG PROJECT_PATH=/opt/savant
 ENV PYTHONUNBUFFERED=1 \
