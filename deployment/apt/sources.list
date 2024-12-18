@@ -1,0 +1,2 @@
+deb https://__RegistryServer__/__NexusDebProxyDir__ bullseye main
+deb https://__RegistryServer__/__NexusDebProxyDir__ bullseye-updates main

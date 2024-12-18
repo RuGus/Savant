@@ -6,6 +6,9 @@ ENV PYTHONUNBUFFERED=1 \
     PYTHONPATH=$PROJECT_PATH
 WORKDIR $PROJECT_PATH
 
+COPY ./deployment/apt/apt.conf /etc/apt/apt.conf
+COPY ./deployment/apt/sources.list /etc/apt/sources.list
+
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
     && apt-get install --no-install-recommends -y \
