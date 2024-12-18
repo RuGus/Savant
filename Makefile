@@ -5,9 +5,9 @@ SHELL := /bin/bash
 SAVANT_VERSION := $(shell cat savant/VERSION | awk -F= '$$1=="SAVANT"{print $$2}' | sed 's/"//g')
 DEEPSTREAM_VERSION := $(shell cat savant/VERSION | awk -F= '$$1=="DEEPSTREAM"{print $$2}' | sed 's/"//g')
 DOCKER_FILE := Dockerfile.deepstream
-PLATFORM := linux/amd64
-ifeq ("$(shell uname -m)", "aarch64")
-	PLATFORM := linux/arm64
+PLATFORM := linux/arm64
+ifeq ("$(shell uname -m)", "x86_64")
+	PLATFORM := linux/amd64
 endif
 PLATFORM_SUFFIX :=
 ifeq ("$(PLATFORM)", "linux/arm64")
