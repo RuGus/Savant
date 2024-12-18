@@ -9,3 +9,7 @@ https://github.com/insight-platform/Savant
 # Сборка образа
 
 ``make -f Makefile build-adapters-py``
+
+Если необходимо жестко задать целевую платформу, то
+
+``make -f Makefile build-adapters-py PLATFORM="linux/arm64"``
